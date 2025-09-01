@@ -1,0 +1,313 @@
+/* Basic Reset & Globals */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* App Container */
+#root {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #212529;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #212529;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #495057;
+    margin-bottom: 0.75rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.name-input-container {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.name-input-container label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #495057;
+}
+
+#planner-name {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#planner-name:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+/* Generic Card Style */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+}
+
+
+/* Trip Info & Time Tracker */
+.trip-info ul {
+    list-style-position: inside;
+    padding-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.trip-info li, .trip-info p {
+    margin-bottom: 0.5rem;
+}
+
+.time-tracker p {
+    font-size: 1.1rem;
+}
+.time-tracker strong {
+    font-weight: 700;
+    color: #212529;
+}
+.warning {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+/* Dinner Planner */
+.dinner-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.dinner-planner fieldset {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.dinner-planner legend {
+    font-weight: 700;
+    padding: 0 0.5rem;
+    color: #495057;
+}
+
+.dinner-planner div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dinner-planner input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #0d6efd;
+}
+
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.select-all-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+#select-all {
+    width: 18px;
+    height: 18px;
+    accent-color: #0d6efd;
+}
+
+#generate-pdf-btn {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+#generate-pdf-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+#generate-pdf-btn:not(:disabled):hover {
+    background-color: #0b5ed7;
+}
+#generate-pdf-btn:not(:disabled):active {
+    transform: scale(0.98);
+}
+
+/* Table styles */
+.table-container {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: top;
+}
+
+thead th {
+    background-color: #f1f3f5;
+    font-weight: 700;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+td:first-child, th:first-child {
+    width: 3%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.site-name {
+    font-weight: 500;
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #0d6efd;
+    cursor: pointer;
+}
+
+/* Responsive Card Layout for smaller screens */
+.cards-container {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .table-container {
+        display: none; /* Hide table on small screens */
+    }
+
+    .cards-container {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .attraction-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.25rem;
+        flex-grow: 1;
+        margin-bottom: 0;
+    }
+
+    .card-body p {
+        margin-bottom: 0.5rem;
+    }
+
+    .card-body p strong {
+        color: #495057;
+        min-width: 120px;
+        display: inline-block;
+    }
+}
